@@ -23,28 +23,28 @@
         </div>
         <div class="row">
             <div class="col-8">
-                {{ mars.featured_image_url }}
+                {{ mars.img_fea }}
             </div>
             <div class="col-4">
-                <table src="./mars_table.html">
+                {{ mars.table }}
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <img src="{{ mars.img_url[0] }}">
-                <h3> {{ mars.title[0] }}</h3>
+                <img src="{{ mars.hemis_pic.img_url[0] }}">
+                <h3> {{ mars.hemis_pic.title[0] }}</h3>
             </div>
             <div class="col-3">
-                <img src="{{ mars.img_url[1] }}">
-                <h3> {{ mars.title[1] }}</h3>
+                <img src="{{ mars.hemis_pic.img_url[1] }}">
+                <h3> {{ mars.hemis_pic.title[1] }}</h3>
             </div>
             <div class="col-3">
-                <img src="{{ mars.img_url[2] }}">
-                <h3> {{ mars.title[2] }}</h3>
+                <img src="{{ mars.hemis_pic.img_url[2] }}">
+                <h3> {{ mars.hemis_pic.title[2] }}</h3>
             </div>
             <div class="col-3">
-                <img src="{{ mars.img_url[3] }}">
-                <h3> {{ mars.title[3] }}</h3>
+                <img src="{{ mars.hemis_pic.img_url[3] }}">
+                <h3> {{ mars.hemis_pic.title[3] }}</h3>
             </div>
         </div>
     </div>

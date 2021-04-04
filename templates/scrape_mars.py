@@ -29,8 +29,8 @@ def scrape_info():
     print(news_p)
 
     # Set up Splinter
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    # executable_path = {'executable_path': ChromeDriverManager().install()}
+    # browser = Browser('chrome', **executable_path, headless=False)
 
     # Visit spaceimages-mars.com
     url2 = "https://spaceimages-mars.com/"
@@ -64,17 +64,12 @@ def scrape_info():
         {"title": "Syrtis Major Hemisphere",
             "img_url": "https://marshemispheres.com/images/syrtis_major_enhanced.tif"},
     ]
-
-    # Store data in a dictionary
-    costa_data = {
-        "sloth_img": sloth_img,
-        "min_temp": min_temp,
-        "max_temp": max_temp
-    }
+    # Store mars data
+    mars_data = {"news": news_title, "news_p": news_p,
+                 "img_fea": featured_image_url, "table": html_table, "hemis_pic": hemisphere_image_urls}
 
     # Close the browser after scraping
     browser.quit()
 
-
-# Return results
-return scrape_info
+    # Return results
+    return mars_data

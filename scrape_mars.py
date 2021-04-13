@@ -45,13 +45,29 @@ def scrape_info():
     # Find the source for the featured image body > div.header > div > a https://spaceimages-mars.com/image/featured/mars2.jpg
     relative_image_path = sopa.find(
         'a', class_='showimg fancybox-thumbs')['href']
-    featured_image_url = url + relative_image_path
+    featured_image_url = url2 + relative_image_path
     print(featured_image_url)
 
     # Get table facts from galaxyfacts-mars.com using pandas
     mars_table = pd.read_html('https://galaxyfacts-mars.com/')
     df = mars_table[1]
-    html_table = df.to_html('mars_table.html', header=None, index=False)
+    html_table = df.to_html()
+
+    # Get hemisphere images
+    url3 = "https://spaceimages-mars.com/"
+    browser.visit(url3)
+
+    time.sleep(1)
+
+    # Scrape page into Soup
+    html = browser.html
+    sop = bs(html, "html.parser")
+
+    # variables
+    title = find
+
+    # Get the title and urls
+    for title in sop
 
     # Obtain high resolution images for each of Mar's hemispheres.
     hemisphere_image_urls = [

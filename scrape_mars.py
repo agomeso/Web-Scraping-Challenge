@@ -51,7 +51,7 @@ def scrape_info():
     # Get table facts from galaxyfacts-mars.com using pandas
     mars_table = pd.read_html('https://galaxyfacts-mars.com/')
     df = mars_table[1]
-    html_table = df.to_html()
+    html_table = df.to_html(index=False, header=None)
 
     # Get hemisphere images
     hemispheres = ['Cerberus', 'Schiaparelli', 'Syrtis', 'Valles']

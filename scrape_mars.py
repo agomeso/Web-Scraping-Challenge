@@ -54,32 +54,34 @@ def scrape_info():
     html_table = df.to_html()
 
     # Get hemisphere images
-    url3 = "https://spaceimages-mars.com/"
-    browser.visit(url3)
+    hemispheres = ['Cerberus', 'Schiaparelli', 'Syrtis', 'Valles']
 
-    time.sleep(1)
+    hemisphere_image_urls = []
+    dic = {}
 
-    # Scrape page into Soup
-    html = browser.html
-    sop = bs(html, "html.parser")
+    for hemisphere in hemispheres:
 
-    # variables
-    title = find
+        # Get hemisphere images
+        url3 = "https://marshemispheres.com/"
+        browser.visit(url3)
 
-    # Get the title and urls
-    for title in sop
+        # Click on the next page
+        browser.click_link_by_partial_text(hemisphere)
 
-    # Obtain high resolution images for each of Mar's hemispheres.
-    hemisphere_image_urls = [
-        {"title": "Valles Marineris Hemisphere",
-            "img_url": "https://marshemispheres.com/images/valles_marineris_enhanced.tif"},
-        {"title": "Cerberus Hemisphere",
-            "img_url": "https://marshemispheres.com/images/cerberus_enhanced.tif"},
-        {"title": "Schiaparelli Hemisphere",
-            "img_url": "https://marshemispheres.com/images/schiaparelli_enhanced.tif"},
-        {"title": "Syrtis Major Hemisphere",
-            "img_url": "https://marshemispheres.com/images/syrtis_major_enhanced.tif"},
-    ]
+        time.sleep(1)
+
+        # Scrape page into Soup
+        html = browser.html
+        sop = bs(html, "html.parser")
+
+        # Get the title and urls
+        img_url = url3 + sop.find_all('a', target="_blank")[2]['href']
+        title = sop.find_all('h2', class_='title')[0].text
+        dic = {"title": title, "img_url": img_url}
+        hemisphere_image_urls.append(dic)
+
+    hemisphere_image_urls
+
     # Store mars data
     mars_data = {"news": news_title, "news_p": news_p,
                  "img_fea": featured_image_url, "table": html_table, "hemis_pic": hemisphere_image_urls}

@@ -3,6 +3,27 @@
 }
 
 #hemis{
-    width: 50px;
-    height: 50px
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-weight: bold;
+
+}
+
+tr:nth-child(even) {
+    background-color:lightgrey;
+}
+
+th {
+  background-color:black;
+  color: white;
+}
+
+table {
+  width: 90%;
 }
